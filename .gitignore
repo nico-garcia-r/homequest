@@ -1,0 +1,49 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build outputs
+dist
+build
+.next
+out
+*.tsbuildinfo
+
+# Dev server log redirects
+api-err.txt
+api-out.txt
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Prisma local DB
+*.db
+*.db-journal
+*.sqlite
+*.sqlite-journal
+
+# Test
+coverage
+.nyc_output
+
+# Totally not a vibecoded app
+.claude
+.husky
+.vscode

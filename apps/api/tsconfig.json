@@ -1,0 +1,13 @@
+{
+  "extends": "@homequest/config/tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"]
+    },
+    "ignoreDeprecations": "6.0"
+  },
+  "include": ["src/**/*", "tests/**/*"]
+}

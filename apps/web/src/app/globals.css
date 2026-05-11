@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ───────────────────────────────────────────────── */
+@layer base {
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply font-lora text-ink bg-parchment;
+    background-image:
+      radial-gradient(ellipse at 18% 78%, rgba(107,63,42,0.10) 0%, transparent 55%),
+      radial-gradient(ellipse at 82% 22%, rgba(44,26,14,0.08) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 100%, rgba(61,43,31,0.06) 0%, transparent 40%);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 { @apply font-cinzel; }
+
+  /* Parchment grain overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #DFC99A; }
+  ::-webkit-scrollbar-thumb { background: #6B3F2A; border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: #3D2B1F; }
+}
+
+/* ── Components ─────────────────────────────────────────── */
+@layer components {
+  .card {
+    @apply bg-parchment-light border-2 border-wood-medium rounded-medieval shadow-medieval;
+  }
+  .card-gold {
+    @apply bg-parchment-light border-2 border-gold rounded-medieval shadow-medieval-gold;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2
+           font-cinzel uppercase tracking-widest text-sm
+           rounded-medieval border-2 transition-all duration-150
+           disabled:opacity-50 disabled:cursor-not-allowed active:translate-y-px;
+  }
+  .btn-primary {
+    @apply btn px-4 py-2 bg-crimson text-parchment-light border-crimson-dark
+           hover:bg-crimson-dark shadow-medieval-sm active:shadow-none;
+  }
+  .btn-secondary {
+    @apply btn px-4 py-2 bg-parchment text-ink border-wood-medium
+           hover:bg-parchment-dark shadow-medieval-sm active:shadow-none;
+  }
+  .btn-gold {
+    @apply btn px-4 py-2 bg-gold text-parchment-light border-gold-dark
+           hover:bg-gold-dark shadow-medieval-sm active:shadow-none;
+  }
+  .btn-ghost {
+    @apply btn px-3 py-1.5 bg-transparent text-ink-muted border-transparent
+           hover:text-ink hover:border-wood-medium;
+  }
+  .btn-sm {
+    @apply text-xs px-3 py-1.5 tracking-wider;
+  }
+
+  .input {
+    @apply w-full border-2 border-wood-medium bg-parchment rounded-medieval
+           px-3 py-2 font-lora text-sm text-ink placeholder:text-ink-light
+           focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/30 transition-colors;
+  }
+  .label {
+    @apply block font-cinzel text-xs uppercase tracking-widest text-ink-muted mb-1.5;
+  }
+
+  .badge {
+    @apply inline-block font-cinzel text-xs uppercase tracking-wide px-2 py-0.5 rounded-medieval border;
+  }
+  .badge-gold    { @apply badge bg-gold/10 text-gold-dark border-gold; }
+  .badge-crimson { @apply badge bg-crimson/10 text-crimson border-crimson; }
+  .badge-forest  { @apply badge bg-forest/10 text-forest border-forest; }
+  .badge-ink     { @apply badge bg-wood-medium/10 text-ink-muted border-wood-medium; }
+
+  .section-title {
+    @apply font-cinzel text-xs uppercase tracking-widest text-ink-muted;
+  }
+  .ornament {
+    @apply flex items-center gap-3 my-3 text-gold-dark text-xs font-cinzel tracking-widest;
+  }
+  .ornament::before, .ornament::after {
+    content: '';
+    @apply flex-1 h-px bg-wood-medium/40;
+  }
+
+  .error-banner {
+    @apply bg-crimson/10 border border-crimson/40 text-crimson
+           rounded-medieval px-3 py-2 text-sm font-lora;
+  }
+
+  .progress-bar  { @apply h-2 overflow-hidden border border-wood-medium/30 bg-wood-dark/20; }
+  .progress-fill { @apply h-full bg-gradient-to-r from-gold-dark to-gold-light transition-all duration-500; }
+
+  .nav-item         { @apply flex-1 flex flex-col items-center py-2 gap-0.5 font-cinzel text-[10px] uppercase tracking-widest transition-colors cursor-pointer; }
+  .nav-item-active  { @apply text-gold; }
+  .nav-item-inactive { @apply text-parchment/50 hover:text-parchment/80; }
+}
