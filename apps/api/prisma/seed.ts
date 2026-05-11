@@ -87,6 +87,8 @@ async function main() {
       update: {
         title: achievement.title,
         description: achievement.description,
+        conditionType: achievement.conditionType,
+        conditionValue: achievement.conditionValue,
         badgeIcon: achievement.badgeIcon,
       },
       create: achievement,

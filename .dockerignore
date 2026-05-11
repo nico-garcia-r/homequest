@@ -1,0 +1,33 @@
+# Dependencies
+node_modules
+**/node_modules
+
+# Build outputs
+apps/api/dist
+apps/web/.next
+
+# Dev database
+apps/api/prisma/dev.db
+apps/api/prisma/*.db-journal
+
+# Env files (injected via docker-compose)
+**/.env
+**/.env.local
+**/.env.*
+
+# Git
+.git
+.gitignore
+
+# Editor
+.vscode
+.idea
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker itself
+docker-compose*.yml
+**/Dockerfile

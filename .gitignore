@@ -17,6 +17,7 @@ api-out.txt
 .env
 .env.local
 .env.*.local
+.env.production
 
 # Logs
 *.log
