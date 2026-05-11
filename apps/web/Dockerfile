@@ -18,7 +18,7 @@ COPY packages/ ./packages/
 COPY apps/web/  ./apps/web/
 
 # Baked into the JS bundle at build time
-ARG NEXT_PUBLIC_API_URL=http://192.168.0.105:3001
+ARG NEXT_PUBLIC_API_URL=http://localhost:3001
 ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 
 RUN pnpm --filter @homequest/web exec next build
@@ -37,5 +37,5 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME=0.0.0.0
 
-# Next.js standalone puts server.js at the root of the output
+# In a monorepo standalone build, server.js mirrors the original app path
 CMD ["node", "apps/web/server.js"]

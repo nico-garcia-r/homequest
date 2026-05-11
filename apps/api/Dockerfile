@@ -17,7 +17,7 @@ RUN pnpm install --frozen-lockfile
 COPY packages/ ./packages/
 COPY apps/api/  ./apps/api/
 
-# Generate Prisma client then compile TS (includes prisma/seed.ts → dist/prisma/seed.js)
+# Generate Prisma client then compile TS (src/ only — seed.ts runs via tsx at runtime)
 RUN pnpm --filter @homequest/api exec prisma generate && \
     pnpm --filter @homequest/api exec tsc -p tsconfig.json
 

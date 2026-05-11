@@ -13,9 +13,9 @@ services:
       PORT: 3001
       LOG_LEVEL: info
       DATABASE_URL: file:/app/data/prod.db
-      JWT_SECRET: ${JWT_SECRET}
+      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET must be set}
       JWT_EXPIRES_IN: 7d
-      CORS_ORIGIN: http://192.168.0.105:3000
+      CORS_ORIGIN: ${WEB_ORIGIN:-http://localhost:3000}
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:3001/health"]
       interval: 30s
@@ -28,7 +28,7 @@ services:
       context: .
       dockerfile: apps/web/Dockerfile
       args:
-        NEXT_PUBLIC_API_URL: http://192.168.0.105:3001
+        NEXT_PUBLIC_API_URL: ${API_URL:-http://localhost:3001}
     restart: unless-stopped
     ports:
       - "3000:3000"
